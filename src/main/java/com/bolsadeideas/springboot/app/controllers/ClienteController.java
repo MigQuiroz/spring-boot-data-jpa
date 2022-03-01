@@ -61,7 +61,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value="/form", method = RequestMethod.POST)
-	public String guardar(@Valid Cliente cliente, BindingResult result, Model model) {
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, String sn) {
             
             System.out.println("Invoke api search");
 
@@ -73,7 +73,7 @@ public class ClienteController {
                 URI uri = new URI(baseUrl);
 
                 RequestSearchOntDto RS = new RequestSearchOntDto();
-                RS.setSerialNumber("4857544345D0B69B");
+                RS.setSerialNumber(sn);
 
                 ResponseEntity<String> res = restTemplate.postForEntity(uri, RS, String.class);
                 ResponseSearchOntDto responseSearchOntDto = new Gson().fromJson(res.getBody(), ResponseSearchOntDto.class);
@@ -82,14 +82,15 @@ public class ClienteController {
                  
                 if (result.hasErrors()) {
                     System.out.println("valor "+responseSearchOntDto.getList().get(0).getEtiqueta());
-                    model.addAttribute("sn",responseSearchOntDto.getList().get(0).getSerialNumber());
+                    model.addAttribute("sn",responseSearchOntDto.getList().get(0).getSn());
                     model.addAttribute("olt",responseSearchOntDto.getList().get(0).getOlt());
                     model.addAttribute("frame",responseSearchOntDto.getList().get(0).getFrame());
                     model.addAttribute("slot",responseSearchOntDto.getList().get(0).getSlot());
                     model.addAttribute("port",responseSearchOntDto.getList().get(0).getPort());
                     model.addAttribute("ontid",responseSearchOntDto.getList().get(0).getOntID());
                     model.addAttribute("etiqueta",responseSearchOntDto.getList().get(0).getEtiqueta());
-                    model.addAttribute("ipolt",responseSearchOntDto.getList().get(0).getIpOlt());
+                    model.addAttribute("ipolt",responseSearchOntDto.getList().get(0).getIpolt());
+                    model.addAttribute("typecut",responseSearchOntDto.getList().get(0).getTypeCut());
                     return "form";
 		}
                 

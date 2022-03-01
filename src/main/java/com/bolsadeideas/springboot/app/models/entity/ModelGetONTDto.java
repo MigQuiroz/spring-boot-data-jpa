@@ -14,11 +14,11 @@ public class ModelGetONTDto {
    private int frame;           
    private int slot;            
    private int port;            
-   private String Olt;          
+   private String olt;          
    private int ontID;           
-   private String ipOlt;           
+   private String ipolt;           
    private String etiqueta;     
-   private String serialNumber;
+   private String sn;
    
    private int typeCut; 
    private String nameProcess; 
@@ -47,15 +47,17 @@ public class ModelGetONTDto {
         this.port = port;
     }
 
+   
+
     public String getOlt() {
-        return Olt;
-    }
+		return olt;
+	}
 
-    public void setOlt(String Olt) {
-        this.Olt = Olt;
-    }
+	public void setOlt(String olt) {
+		this.olt = olt;
+	}
 
-    public int getOntID() {
+	public int getOntID() {
         return ontID;
     }
 
@@ -63,15 +65,17 @@ public class ModelGetONTDto {
         this.ontID = ontID;
     }
 
-    public String getIpOlt() {
-        return ipOlt;
-    }
+    
 
-    public void setIpOlt(String ipOlt) {
-        this.ipOlt = ipOlt;
-    }
+    public String getIpolt() {
+		return ipolt;
+	}
 
-    public String getEtiqueta() {
+	public void setIpolt(String ipolt) {
+		this.ipolt = ipolt;
+	}
+
+	public String getEtiqueta() {
         return etiqueta;
     }
 
@@ -79,15 +83,17 @@ public class ModelGetONTDto {
         this.etiqueta = etiqueta;
     }
 
-    public String getSerialNumber() {
-        return serialNumber;
-    }
+   
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
+    public String getSn() {
+		return sn;
+	}
 
-    public int getTypeCut() {
+	public void setSn(String sn) {
+		this.sn = sn;
+	}
+
+	public int getTypeCut() {
         return typeCut;
     }
 

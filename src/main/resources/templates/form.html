@@ -22,13 +22,14 @@
 	</nav>
 	<h1 class="col text-center">Coreografia de microservicios</h1>
 	
-	<div class="container ">
+	<div class="container ml-0">
 		<div class="row">
 			<h2 class="col text-center">Consulta ONT</h2>
+			<h2 class="col text-center">espacio</h2>
 			<h2 class="col text-center">Consulta Tipo de Alarma</h2>
 		</div>
 		<div class="row">
-			<div class="col border   border-success">
+			<div class="col col-sm-5 border   border-success">
 				<h4>Request</h4>
 				<form th:action="@{/form}" th:object="${cliente}" method="post"
 					class="d-grid gap-2">
@@ -42,7 +43,7 @@
 								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 						</div>
 						<div class="col-sm-3">
-							<input type="submit" value="Consultar" class="btn btn-primary" />
+							<input type="submit" value="Consultar" class="btn btn-primary btn-sm" />
 						</div>
 						<br> <label>Endpoint:
 							http://localhost:8083/ont/GetSearchONT</label>
@@ -54,47 +55,43 @@
 						getModelGetONT:
 						http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</small></label>
 				<div class="row">
-					<label class="col-sm-3">frame:</label> <input class="col-sm-6">
+					<label class="col-sm-3">frame:</label> <input class="col-sm-6"
+						th:value="${frame}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">slot:</label> <input class="col-sm-6">
+					<label class="col-sm-3">slot:</label> <input class="col-sm-6" th:value="${slot}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">port:</label> <input class="col-sm-6">
+					<label class="col-sm-3">port:</label> <input class="col-sm-6" th:value="${port}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">Olt:</label> <input class="col-sm-6">
+					<label class="col-sm-3">Olt:</label> <input class="col-sm-6" th:value="${olt}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">ontID:</label> <input class="col-sm-6">
+					<label class="col-sm-3">ontID:</label> <input class="col-sm-6" th:value="${ontid}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">ipOlt:</label> <input class="col-sm-6">
+					<label class="col-sm-3">ipOlt:</label> <input class="col-sm-6" th:value="${ipolt}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">etiqueta:</label> <input class="col-sm-6">
+					<label class="col-sm-3">etiqueta:</label> <input class="col-sm-6" th:value="${etiqueta}">
 				</div>
 				<div class="row">
-					<label class="col-sm-3">serialNumber:</label> <input
-						class="col-sm-6">
+					<label class="col-sm-3">serialNumber:</label> <input class="col-sm-6" th:value="${sn}">
 				</div>
 				<h5>publish Channel 'channel-typealarm'</h5>
 				<label>id:1234</label> <label>Body</label>
 				<div class="border   border-warning">
 
-					{<br> <label class="text-danger">"frame"</label>:<label
-						class="text-primary"> 0,</label> <br> <label
-						class="text-danger">"slot"</label>:<label class="text-primary">
-						15,</label><br> <label class="text-danger">"port"</label>:<label
-						class="text-primary"> 6,</label><br> <label
-						class="text-danger">"Olt"</label>:<label class="text-primary">
-						"FUENTES_BROTANTES_2_DF",</label><br> <label class="text-danger">"ontID"</label>:<label
-						class="text-primary"> 36,</label><br> <label
-						class="text-danger">"ipOlt"</label>:<label class="text-primary">"10.180.19.103",</label><br>
-					<label class="text-danger">"etiqueta"</label>:<label
-						class="text-primary">"0102058895_TP_FEDERICO_ALBERTO_ORTIZ_REYES",</label><br>
-					<label class="text-danger">"serialNumber"</label>:<label
-						class="text-primary"> "4857544345D0B69B"</label><br> }
+					{<br> <label class="text-danger" th:text="frame"></label>:<label class="text-primary" th:text="${frame}"> ,</label> <br> 
+					<label class="text-danger">"slot"</label>:<label class="text-primary" th:text="${slot}">,</label><br> 
+					<label class="text-danger">"port"</label>:<label class="text-primary" th:text="${port}"> ,
+					</label><br> <label	class="text-danger">"Olt"</label>:<label class="text-primary"th:text="${olt}"> ,</label><br> 
+					<label class="text-danger">"ontID"</label>:<label class="text-primary" th:text="${ontid}"> ,	</label><br> 
+					<label class="text-danger">"ipOlt"</label>:<label class="text-primary" th:text="${ipolt}">,</label><br>
+					<label class="text-danger">"etiqueta"</label>:<label class="text-primary" th:text="${etiqueta}">,</label><br>
+					<label class="text-danger">"serialNumber"</label>:<label class="text-primary" th:text="${sn}"></label><br> 
+					}
 
 
 				</div>
@@ -102,7 +99,8 @@
 
 
 			</div>
-			<div class="col col border d-grid gap-1 border-success">
+			<div class="col col border d-grid gap-1 border-success">espacio</div>
+			<div class="col col-sm-5 border d-grid gap-1 border-success">
 				<div>
 					<h4>Subscribe Channel 'channel-typealarm'</h4>
 					<label>id:1234</label>
@@ -111,34 +109,33 @@
 						bpelGetPersonalAlarm:
 						http://10.213.8.248/TprovisioningABCws/BPEL.asmx?wsdl"</label>
 					<div class="row">
-						<label class="col-sm-3">frame:</label> <input class="col-sm-6">
+						<label class="col-sm-3">frame:</label> <input class="col-sm-6" th:value="${frame}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">slot:</label> <input class="col-sm-6">
+						<label class="col-sm-3">slot:</label> <input class="col-sm-6" th:value="${slot}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">port:</label> <input class="col-sm-6">
+						<label class="col-sm-3">port:</label> <input class="col-sm-6" th:value="${port}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">Olt:</label> <input class="col-sm-6">
+						<label class="col-sm-3">Olt:</label> <input class="col-sm-6" th:value="${olt}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">ontID:</label> <input class="col-sm-6">
+						<label class="col-sm-3">ontID:</label> <input class="col-sm-6" th:value="${ontid}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">ipOlt:</label> <input class="col-sm-6">
+						<label class="col-sm-3">ipOlt:</label> <input class="col-sm-6" th:value="${ipolt}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">etiqueta:</label> <input class="col-sm-6">
+						<label class="col-sm-3">etiqueta:</label> <input class="col-sm-6" th:value="${etiqueta}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">serialNumber:</label> <input
-							class="col-sm-6">
+						<label class="col-sm-3">serialNumber:</label> <input class="col-sm-6" th:value="${sn}">
 					</div>
 
 					<h4>Response</h4>
 					<div class="row">
-						<label class="col-sm-3">typeCut:</label> <input class="col-sm-6">
+						<label class="col-sm-3">typeCut:</label> <input class="col-sm-6" th:value="${typecut}">
 					</div>
 					<div class="row">
 						<label class="col-sm-3">descripción:</label> <input
@@ -148,8 +145,9 @@
 					<label>id</label> <label>body</label>
 					<div class="form-control">
 
-						{ <br> <label class="text-danger"> "serialNumber"</label>: <label
-							class="text-primary">"4857544345D0B69B"</label> <br> }
+						{ <br> 
+						<label class="text-danger"> "serialNumber"</label>: <label class="text-primary" th:text="${sn}"></label> <br> 
+						}
 
 
 					</div>
@@ -167,10 +165,10 @@
 			<h4>Subscribe Channel 'type-alarm'</h4>
 			<label>id:123</label>
 			<div class="row">
-				<label class="col-sm-3">typeCut:</label> <input class="col-sm-6">
+				<label class="col-sm-3">typeCut:</label> <input class="col-sm-6" th:value="${typecut}">
 			</div>
 			<div class="row">
-				<label class="col-sm-3">desc:</label> <input class="col-sm-6">
+				<label class="col-sm-3">descripción:</label> <input class="col-sm-6" >
 			</div>
 
 
