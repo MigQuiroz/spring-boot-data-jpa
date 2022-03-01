@@ -60,7 +60,7 @@ public class ClienteController {
 	@RequestMapping(value="/form", method = RequestMethod.POST)
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model) {
             
-            System.out.println("alfredo test AA");
+            System.out.println("Invoke api search");
 
             try {
                 
