@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.bolsadeideas.springboot.app.models.entity.RequestSearchOntDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+import com.google.gson.Gson;
+import java.net.URI;
 
 @Controller
 public class ClienteController {
@@ -53,13 +59,43 @@ public class ClienteController {
 	
 	@RequestMapping(value="/form", method = RequestMethod.POST)
 	public String guardar(@Valid Cliente cliente, BindingResult result, Model model) {
+            
+            System.out.println("alfredo test AA");
+
+            try {
+                
+            
+                RestTemplate restTemplate = new RestTemplate();
+
+                 final String baseUrl = "http://localhost:8083/ont/GetSearchOntTest";
+                 URI uri = new URI(baseUrl);
+
+                 RequestSearchOntDto RS = new RequestSearchOntDto();
+                 RS.setSerialNumber("4857544345D0B69B");
+
+                 ResponseEntity<String> res = restTemplate.postForEntity(uri, RS, String.class);
+                 System.out.println("response: "+objectToJson(res) );
+            
+            } catch (Exception e) {
+                
+                System.out.println("error "+e);
+            }
+
+            
+//                
+                                  
 		if (result.hasErrors()) {
 			model.addAttribute("titulo","Formulario de Cliente");
 			return "form";
 		}
-		
-		clienteDao.save(cliente);
+		System.out.println("alfredo test");
+//		clienteDao.save(cliente);
 		return "redirect:listar";
 	}
 
+        private static String objectToJson(Object obj) {
+            Gson gson = new Gson();
+            return gson.toJson(obj);
+        }
+            
 }
