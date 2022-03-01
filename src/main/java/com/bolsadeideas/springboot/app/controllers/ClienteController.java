@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
 import com.bolsadeideas.springboot.app.models.entity.RequestSearchOntDto;
+import com.bolsadeideas.springboot.app.models.entity.ResponseSearchOntDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.net.URI;
+import java.util.List;
 
 @Controller
 public class ClienteController {
@@ -63,34 +66,40 @@ public class ClienteController {
             System.out.println("Invoke api search");
 
             try {
-                
-            
+
                 RestTemplate restTemplate = new RestTemplate();
 
-                 final String baseUrl = "http://localhost:8083/ont/GetSearchOntTest";
-                 URI uri = new URI(baseUrl);
+                final String baseUrl = "http://localhost:8083/ont/GetSearchOntTest";
+                URI uri = new URI(baseUrl);
 
-                 RequestSearchOntDto RS = new RequestSearchOntDto();
-                 RS.setSerialNumber("4857544345D0B69B");
+                RequestSearchOntDto RS = new RequestSearchOntDto();
+                RS.setSerialNumber("4857544345D0B69B");
 
-                 ResponseEntity<String> res = restTemplate.postForEntity(uri, RS, String.class);
-                 System.out.println("response: "+objectToJson(res) );
-            
+                ResponseEntity<String> res = restTemplate.postForEntity(uri, RS, String.class);
+                ResponseSearchOntDto responseSearchOntDto = new Gson().fromJson(res.getBody(), ResponseSearchOntDto.class);
+
+                System.out.println("response 2: "+objectToJson(responseSearchOntDto) );
+                 
+                if (result.hasErrors()) {
+                    System.out.println("valor "+responseSearchOntDto.getList().get(0).getEtiqueta());
+                    model.addAttribute("sn",responseSearchOntDto.getList().get(0).getSerialNumber());
+                    model.addAttribute("olt",responseSearchOntDto.getList().get(0).getOlt());
+                    model.addAttribute("frame",responseSearchOntDto.getList().get(0).getFrame());
+                    model.addAttribute("slot",responseSearchOntDto.getList().get(0).getSlot());
+                    model.addAttribute("port",responseSearchOntDto.getList().get(0).getPort());
+                    model.addAttribute("ontid",responseSearchOntDto.getList().get(0).getOntID());
+                    model.addAttribute("etiqueta",responseSearchOntDto.getList().get(0).getEtiqueta());
+                    model.addAttribute("ipolt",responseSearchOntDto.getList().get(0).getIpOlt());
+                    return "form";
+		}
+                
             } catch (Exception e) {
                 
                 System.out.println("error "+e);
             }
 
-            
-//                
-                                  
-		if (result.hasErrors()) {
-			model.addAttribute("titulo","Formulario de Cliente");
-			return "form";
-		}
-		System.out.println("alfredo test");
 //		clienteDao.save(cliente);
-		return "redirect:listar";
+            return "redirect:listar";
 	}
 
         private static String objectToJson(Object obj) {
