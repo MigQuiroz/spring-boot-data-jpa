@@ -12,79 +12,97 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Spring Boot</a>
+		<a class="navbar-brand" href="#">Totalplay</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link" href="#">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Clientes</a>
-				</li>
-			</ul>
-		</div>
+
 	</nav>
-	<div class="container">
-		<h1
-			class="text-secondary border border-success border-top-0 border-left-0 border-right-0"
-			th:text="${titulo}"></h1>
-		<div th:object="${cliente}" th:remove="tag">
-			<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
-				<li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
-			</ul>
+	<div class="container ">
+		<div class="row">
+		<h2 class="col text-center">titulo</h2>
+		<h2 class="col text-center">titulo</h2>
 		</div>
-		<form th:action="@{/form}" th:object="${cliente}" method="post">
+		<div class="row">
+			<div class="col border  d-grid gap-1 border-success">
+				<h4>Consulta ONT</h4>
 
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Nombre</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{nombre}" class="form-control"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Apellido</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{apellido}" class="form-control"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Email</label>
-				<div class="col-sm-6">
-					<input type="text" th:field="*{email}" class="form-control"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Fecha</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" th:field="*{createAt}"
-						th:errorclass="'form-control alert-danger'" /> <small
-						class="form-text text-danger"
-						th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-6">
-					<input type="submit" value="Crear Cliente" class="btn btn-primary" />
-				</div>
-			</div>
+				<form th:action="@{/form}" th:object="${cliente}" method="post"
+					class="d-grid gap-2">
+
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">serialNumber</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombre}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-6">
+							<input type="submit" value="Consultar" class="btn btn-primary" />
+						</div>
+					</div>
 
 
-			<input type="hidden" th:field="*{id}" />
-		</form>
+					<input type="hidden" th:field="*{id}" />
+				</form>
+			</div>
+			<div class="col col border d-grid gap-1 border-success">
+				<div>
+					<h4>Consulta Tipo de Alarma</h4>
+					<label class="col-sm-2 col-form-label">Request</label>
+					<div class="form-control">
+						<pre>
+{ 
+	<label class="text-danger"> "serialNumber"</label>: <label class="text-primary">"4857544345D0B69B"</label>
+}
+					</pre>
+
+					</div>
+					<label class="col-sm-2 col-form-label">Response</label>
+					<div class="form-control">
+					<pre>
+{
+	<label class="text-danger">"frame"</label>:<label class="text-primary"> 0,</label>
+	<label class="text-danger">"slot"</label>:<label class="text-primary"> 15,</label>
+	<label class="text-danger">"port"</label>:<label class="text-primary"> 6,</label>
+	<label class="text-danger">"Olt"</label>:<label class="text-primary"> "FUENTES_BROTANTES_2_DF",</label>
+	<label class="text-danger">"ontID"</label>:<label class="text-primary"> 36,</label>
+	<label class="text-danger">"ipOlt"</label>:<label class="text-primary">"10.180.19.103",</label>
+	<label class="text-danger">"etiqueta"</label>:<label class="text-primary">"0102058895_TP_FEDERICO_ALBERTO_ORTIZ_REYES",</label>
+	<label class="text-danger">"serialNumber"</label>:<label class="text-primary"> "4857544345D0B69B"</label>
+}
+					</pre>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		<h2 class="col text-center">titulo</h2>
+		
+		</div>
+		
+			<div class="row border d-grid gap-1 border-success">
+				
+					<h4>Consulta Tipo de Alarma</h4>
+					<div class="row">
+					<label class="col-sm-2" >typeCut</label>
+					<div class="form-control col">3</div>
+					</div>
+					<div class="row">
+					<label class="col-sm-2">Descripción</label>
+					<div class="form-control col">Sin información de corte de fibra</div>
+					</div>
+					
+				
+			</div>
+		
 	</div>
-
 </body>
 </html>
