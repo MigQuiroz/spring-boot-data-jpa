@@ -22,13 +22,12 @@
 	</nav>
 	<div class="container ">
 		<div class="row">
-		<h2 class="col text-center">titulo</h2>
-		<h2 class="col text-center">titulo</h2>
+			<h2 class="col text-center">Consulta ONT</h2>
+			<h2 class="col text-center">Consulta Tipo de Alarma</h2>
 		</div>
 		<div class="row">
-			<div class="col border  d-grid gap-1 border-success">
-				<h4>Consulta ONT</h4>
-
+			<div class="col border   border-success">
+				<h4>Request</h4>
 				<form th:action="@{/form}" th:object="${cliente}" method="post"
 					class="d-grid gap-2">
 
@@ -40,69 +39,141 @@
 								class="form-text text-danger"
 								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 							<input type="submit" value="Consultar" class="btn btn-primary" />
 						</div>
+						<br> <label>Endpoint:
+							http://localhost:8083/ont/GetSearchONT</label>
 					</div>
-
-
-					<input type="hidden" th:field="*{id}" />
+					<br> <input type="hidden" th:field="*{id}" />
 				</form>
+				<h4>Response</h4>
+				<label> <small>l Invoke TProvisioning
+						getModelGetONT:
+						http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</small></label>
+				<div class="row">
+					<label class="col-sm-3">frame:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">slot:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">port:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">Olt:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">ontID:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">ipOlt:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">etiqueta:</label> <input class="col-sm-6">
+				</div>
+				<div class="row">
+					<label class="col-sm-3">serialNumber:</label> <input
+						class="col-sm-6">
+				</div>
+				<h5>publish Channel 'channel-typealarm'</h5>
+				<label>id:1234</label> <label>Body</label>
+				<div class="border   border-warning">
+
+					{<br> <label class="text-danger">"frame"</label>:<label
+						class="text-primary"> 0,</label> <br> <label
+						class="text-danger">"slot"</label>:<label class="text-primary">
+						15,</label><br> <label class="text-danger">"port"</label>:<label
+						class="text-primary"> 6,</label><br> <label
+						class="text-danger">"Olt"</label>:<label class="text-primary">
+						"FUENTES_BROTANTES_2_DF",</label><br> <label class="text-danger">"ontID"</label>:<label
+						class="text-primary"> 36,</label><br> <label
+						class="text-danger">"ipOlt"</label>:<label class="text-primary">"10.180.19.103",</label><br>
+					<label class="text-danger">"etiqueta"</label>:<label
+						class="text-primary">"0102058895_TP_FEDERICO_ALBERTO_ORTIZ_REYES",</label><br>
+					<label class="text-danger">"serialNumber"</label>:<label
+						class="text-primary"> "4857544345D0B69B"</label><br> }
+
+
+				</div>
+
+
+
 			</div>
 			<div class="col col border d-grid gap-1 border-success">
 				<div>
-					<h4>Consulta Tipo de Alarma</h4>
-					<label class="col-sm-2 col-form-label">Request</label>
+					<h4>Subscribe Channel 'channel-typealarm'</h4>
+					<label>id:1234</label>
+					<h4>Request</h4>
+					<label class="col-sm-2 col-form-label">invoke
+						bpelGetPersonalAlarm:
+						http://10.213.8.248/TprovisioningABCws/BPEL.asmx?wsdl"</label>
+					<div class="row">
+						<label class="col-sm-3">frame:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">slot:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">port:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">Olt:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">ontID:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">ipOlt:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">etiqueta:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">serialNumber:</label> <input
+							class="col-sm-6">
+					</div>
+
+					<h4>Response</h4>
+					<div class="row">
+						<label class="col-sm-3">typeCut:</label> <input class="col-sm-6">
+					</div>
+					<div class="row">
+						<label class="col-sm-3">descripción:</label> <input
+							class="col-sm-6">
+					</div>
+					<h4>Publish Channel 'type-alarm'</h4>
+					<label>id</label> <label>body</label>
 					<div class="form-control">
-						<pre>
-{ 
-	<label class="text-danger"> "serialNumber"</label>: <label class="text-primary">"4857544345D0B69B"</label>
-}
-					</pre>
+
+						{ <br> <label class="text-danger"> "serialNumber"</label>: <label
+							class="text-primary">"4857544345D0B69B"</label> <br> }
+
 
 					</div>
-					<label class="col-sm-2 col-form-label">Response</label>
-					<div class="form-control">
-					<pre>
-{
-	<label class="text-danger">"frame"</label>:<label class="text-primary"> 0,</label>
-	<label class="text-danger">"slot"</label>:<label class="text-primary"> 15,</label>
-	<label class="text-danger">"port"</label>:<label class="text-primary"> 6,</label>
-	<label class="text-danger">"Olt"</label>:<label class="text-primary"> "FUENTES_BROTANTES_2_DF",</label>
-	<label class="text-danger">"ontID"</label>:<label class="text-primary"> 36,</label>
-	<label class="text-danger">"ipOlt"</label>:<label class="text-primary">"10.180.19.103",</label>
-	<label class="text-danger">"etiqueta"</label>:<label class="text-primary">"0102058895_TP_FEDERICO_ALBERTO_ORTIZ_REYES",</label>
-	<label class="text-danger">"serialNumber"</label>:<label class="text-primary"> "4857544345D0B69B"</label>
-}
-					</pre>
-						
-					</div>
+
 				</div>
 			</div>
 		</div>
 		<div class="row">
-		<h2 class="col text-center">titulo</h2>
-		
+			<h2 class="col text-center">Cliente Consumidor de Eventos</h2>
+
 		</div>
-		
-			<div class="row border d-grid gap-1 border-success">
-				
-					<h4>Consulta Tipo de Alarma</h4>
-					<div class="row">
-					<label class="col-sm-2" >typeCut</label>
-					<div class="form-control col">3</div>
-					</div>
-					<div class="row">
-					<label class="col-sm-2">Descripción</label>
-					<div class="form-control col">Sin información de corte de fibra</div>
-					</div>
-					
-				
+
+		<div class="row border d-grid gap-1 border-success">
+
+			<h4>Subscribe Channel 'type-alarm'</h4>
+			<label>id:123</label>
+			<div class="row">
+				<label class="col-sm-3">typeCut:</label> <input class="col-sm-6">
 			</div>
-		
+			<div class="row">
+				<label class="col-sm-3">desc:</label> <input class="col-sm-6">
+			</div>
+
+
+		</div>
+
 	</div>
 </body>
 </html>
