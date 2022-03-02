@@ -99,14 +99,15 @@
                                     <label>Body</label>
                                     <div class="border   border-warning ">
 
-                                            {<br> <label class="text-danger" th:text="frame"></label>:<label class="text-primary" th:text="${frame}"> ,</label> <br> 
-                                            <label class="text-danger">"slot"</label>:<label class="text-primary" th:text="${slot}">,</label><br> 
-                                            <label class="text-danger">"port"</label>:<label class="text-primary" th:text="${port}"> ,
-                                            </label><br> <label	class="text-danger">"Olt"</label>:<label class="text-primary"th:text="${olt}"> ,</label><br> 
-                                            <label class="text-danger">"ontID"</label>:<label class="text-primary" th:text="${ontid}"> ,	</label><br> 
-                                            <label class="text-danger">"ipOlt"</label>:<label class="text-primary" th:text="${ipolt}">,</label><br>
-                                            <label class="text-danger">"etiqueta"</label>:<label class="text-primary" th:text="${etiqueta}">,</label><br>
-                                            <label class="text-danger">"serialNumber"</label>:<label class="text-primary" th:text="${sn}"></label><br> 
+                                            {<br>
+                                            &nbsp;&nbsp; <label class="text-danger" >"frame"</label>:<label class="text-primary" th:text="${frame}"> ,</label> <br> 
+                                            &nbsp;&nbsp;<label class="text-danger">"slot"</label>:<label class="text-primary" th:text="${slot}">,</label><br> 
+                                            &nbsp;&nbsp;<label class="text-danger">"port"</label>:<label class="text-primary" th:text="${port}"> ,</label><br> 
+                                            &nbsp;&nbsp;<label	class="text-danger">"Olt"</label>:<label class="text-primary"th:text="${olt}"> ,</label><br> 
+                                            &nbsp;&nbsp;<label class="text-danger">"ontID"</label>:<label class="text-primary" th:text="${ontid}"> ,	</label><br> 
+                                            &nbsp;&nbsp;<label class="text-danger">"ipOlt"</label>:<label class="text-primary" th:text="${ipolt}">,</label><br>
+                                            &nbsp;&nbsp;<label class="text-danger">"etiqueta"</label>:<label class="text-primary" th:text="${etiqueta}">,</label><br>
+                                            &nbsp;&nbsp;<label class="text-danger">"serialNumber"</label>:<label class="text-primary" th:text="${sn}"></label><br> 
                                             }
 
 
@@ -178,7 +179,9 @@
 					<div class="form-control">
 
 						{ <br> 
-						<label class="text-danger"> "serialNumber"</label>: <label class="text-primary" th:text="${sn}"></label> <br> 
+						<label class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;"typeCut"</label>: <label class="text-primary" th:text="${typecut}">,</label> <br> 
+																										<!--  -->
+						<label class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;"desc"</label>: <label class="text-primary" th:text="${desc}">,</label> <br> 
 						}
 
 

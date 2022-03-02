@@ -93,6 +93,7 @@ public class ClienteController {
                     model.addAttribute("etiqueta",responseSearchOntDto.getList().get(0).getEtiqueta());
                     model.addAttribute("ipolt",responseSearchOntDto.getList().get(0).getIpolt());
                     model.addAttribute("typecut",responseSearchOntDto.getList().get(0).getTypeCut());
+                    model.addAttribute("desc", "Sin informacion de corte de fibra");
                     return "form";
 		}
                 
