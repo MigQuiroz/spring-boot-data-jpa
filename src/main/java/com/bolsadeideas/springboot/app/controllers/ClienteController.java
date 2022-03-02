@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.net.URI;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ClienteController {
@@ -60,11 +61,10 @@ public class ClienteController {
 		return "form";
 	}
 	
-	@RequestMapping(value="/form", method = RequestMethod.POST)
-	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, String sn) {
+	@RequestMapping(value="/form", method = RequestMethod.POST )
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model ) {
             
-            System.out.println("Invoke api search");
-
+ 
             try {
 
                 RestTemplate restTemplate = new RestTemplate();
@@ -73,8 +73,10 @@ public class ClienteController {
                 URI uri = new URI(baseUrl);
 
                 RequestSearchOntDto RS = new RequestSearchOntDto();
-                RS.setSerialNumber(sn);
-
+                
+                System.out.println(" Serial Number "+cliente.getNombre());
+                RS.setSerialNumber(cliente.getNombre());
+               
                 ResponseEntity<String> res = restTemplate.postForEntity(uri, RS, String.class);
                 ResponseSearchOntDto responseSearchOntDto = new Gson().fromJson(res.getBody(), ResponseSearchOntDto.class);
 

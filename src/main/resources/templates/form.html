@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-
+   
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">Totalplay</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -20,14 +20,15 @@
 		</button>
 
 	</nav>
-	<h1 class="col text-center">Coreografia de microservicios</h1>
+	<h1 class="col text-center"> Microservicios con Bus de Eventos</h1>
 	
 	<div class="container ml-0">
 		<div class="row">
 			<h2 class="col text-center">Consulta ONT</h2>
-			<h2 class="col text-center">espacio</h2>
+			<h2 class="col text-center">             </h2>
 			<h2 class="col text-center">Consulta Tipo de Alarma</h2>
-		</div>
+		</div>   
+            
 		<div class="row">
 			<div class="col col-sm-5 border   border-success">
 				<h4>Request</h4>
@@ -43,17 +44,20 @@
 								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 						</div>
 						<div class="col-sm-3">
-							<input type="submit" value="Consultar" class="btn btn-primary btn-sm" />
+							<input type="submit" value="submit" class="btn btn-primary btn-sm" />
 						</div>
-						<br> <label>Endpoint:
-							http://localhost:8083/ont/GetSearchONT</label>
+						
+                                                <br> 
+                                                <label> Invoke getModelGetONT:</label>
+                                                <label style="color: #62A2F5">http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</label>
+                                                
+                                                
 					</div>
 					<br> <input type="hidden" th:field="*{id}" />
 				</form>
 				<h4>Response</h4>
-				<label> <small>l Invoke TProvisioning
-						getModelGetONT:
-						http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</small></label>
+                          
+                      
 				<div class="row">
 					<label class="col-sm-3">frame:</label> <input class="col-sm-6"
 						th:value="${frame}">
@@ -79,35 +83,53 @@
 				<div class="row">
 					<label class="col-sm-3">serialNumber:</label> <input class="col-sm-6" th:value="${sn}">
 				</div>
-				<h5>publish Channel 'channel-typealarm'</h5>
-				<label>id:1234</label> <label>Body</label>
-				<div class="border   border-warning">
+                                
+                                <br>
+                                <br>
+                                <br>    
 
-					{<br> <label class="text-danger" th:text="frame"></label>:<label class="text-primary" th:text="${frame}"> ,</label> <br> 
-					<label class="text-danger">"slot"</label>:<label class="text-primary" th:text="${slot}">,</label><br> 
-					<label class="text-danger">"port"</label>:<label class="text-primary" th:text="${port}"> ,
-					</label><br> <label	class="text-danger">"Olt"</label>:<label class="text-primary"th:text="${olt}"> ,</label><br> 
-					<label class="text-danger">"ontID"</label>:<label class="text-primary" th:text="${ontid}"> ,	</label><br> 
-					<label class="text-danger">"ipOlt"</label>:<label class="text-primary" th:text="${ipolt}">,</label><br>
-					<label class="text-danger">"etiqueta"</label>:<label class="text-primary" th:text="${etiqueta}">,</label><br>
-					<label class="text-danger">"serialNumber"</label>:<label class="text-primary" th:text="${sn}"></label><br> 
-					}
+                
+                                <div class="col-md-9 " style="margin: auto">
+                                 
+                                <h6 align="center" style="color:#0D0D0D" > 
+                                    <label  style="font-size: 20px;" >publish Channel  <label style="color: #499556; font-size: 22px;">  'channel-typealarm'  </label> </label> 
+                                </h6>
+                                    
+                                  
+                                    <label>Body</label>
+                                    <div class="border   border-warning ">
+
+                                            {<br> <label class="text-danger" th:text="frame"></label>:<label class="text-primary" th:text="${frame}"> ,</label> <br> 
+                                            <label class="text-danger">"slot"</label>:<label class="text-primary" th:text="${slot}">,</label><br> 
+                                            <label class="text-danger">"port"</label>:<label class="text-primary" th:text="${port}"> ,
+                                            </label><br> <label	class="text-danger">"Olt"</label>:<label class="text-primary"th:text="${olt}"> ,</label><br> 
+                                            <label class="text-danger">"ontID"</label>:<label class="text-primary" th:text="${ontid}"> ,	</label><br> 
+                                            <label class="text-danger">"ipOlt"</label>:<label class="text-primary" th:text="${ipolt}">,</label><br>
+                                            <label class="text-danger">"etiqueta"</label>:<label class="text-primary" th:text="${etiqueta}">,</label><br>
+                                            <label class="text-danger">"serialNumber"</label>:<label class="text-primary" th:text="${sn}"></label><br> 
+                                            }
 
 
-				</div>
+                                    </div> 
+                                </div>
+                                <br>
 
-
-
+                                
+                                
+ 
 			</div>
-			<div class="col col border d-grid gap-1 border-success">espacio</div>
+			<div class="col col border d-grid gap-1 "> adap </div> 
 			<div class="col col-sm-5 border d-grid gap-1 border-success">
 				<div>
-					<h4>Subscribe Channel 'channel-typealarm'</h4>
-					<label>id:1234</label>
+
+                                        <h6 align="center" style="color:#0D0D0D" > 
+                                            <label  style="font-size: 20px;" >Subscribe Channel  <label style="color: #499556; font-size: 22px;">  'channel-typealarm'  </label> </label> 
+                                        </h6>
+
 					<h4>Request</h4>
-					<label class="col-sm-2 col-form-label">invoke
-						bpelGetPersonalAlarm:
-						http://10.213.8.248/TprovisioningABCws/BPEL.asmx?wsdl"</label>
+                                        <label> invoke bpelGetPersonalAlarm:</label>
+                                        <label style="color: #62A2F5">http://10.213.8.248/TprovisioningABCws/BPEL.asmx?wsdl"</label>
+                                        
 					<div class="row">
 						<label class="col-sm-3">frame:</label> <input class="col-sm-6" th:value="${frame}">
 					</div>
@@ -133,6 +155,9 @@
 						<label class="col-sm-3">serialNumber:</label> <input class="col-sm-6" th:value="${sn}">
 					</div>
 
+                                          <br>
+                                <br>   
+                                
 					<h4>Response</h4>
 					<div class="row">
 						<label class="col-sm-3">typeCut:</label> <input class="col-sm-6" th:value="${typecut}">
@@ -141,8 +166,15 @@
 						<label class="col-sm-3">descripción:</label> <input
 							class="col-sm-6">
 					</div>
-					<h4>Publish Channel 'type-alarm'</h4>
-					<label>id</label> <label>body</label>
+
+                                        
+                                <br>
+                                <br>   
+                                        <h6 align="center" style="color:#0D0D0D" > 
+                                            <label  style="font-size: 20px;" >publish Channel  <label style="color: #499556; font-size: 22px;">  'type-alarm'  </label> </label> 
+                                        </h6>
+                                        
+                                        
 					<div class="form-control">
 
 						{ <br> 
@@ -155,16 +187,25 @@
 				</div>
 			</div>
 		</div>
+                <br>
+                <br>
+                <br>
+                
 		<div class="row">
-			<h2 class="col text-center">Cliente Consumidor de Eventos</h2>
+			<h4 class="col text-center">Cliente</h4>
 
 		</div>
+                
+                
+                
 
-		<div class="row border d-grid gap-1 border-success">
-
-			<h4>Subscribe Channel 'type-alarm'</h4>
-			<label>id:123</label>
-			<div class="row">
+		<div class="row border d-grid gap-1 border-success col-md-5" style="margin:auto">
+  
+                    
+                    <h6 align="center" style="color:#0D0D0D" > 
+                        <label  style="font-size: 20px;" >Subscribe Channel  <label style="color: #499556; font-size: 22px;">  'type-alarm'  </label> </label> 
+                    </h6>
+                    <div class="row">
 				<label class="col-sm-3">typeCut:</label> <input class="col-sm-6" th:value="${typecut}">
 			</div>
 			<div class="row">
@@ -173,7 +214,17 @@
 
 
 		</div>
-
+                <br>
+                <br>
+                <br>    
+                <br>
+                <br>
+                <br>
+                
+                
 	</div>
+        
+        
+        
 </body>
 </html>
