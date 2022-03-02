@@ -21,40 +21,26 @@
 
 	</nav>
 	<h1 class="col text-center"> Microservicios con Bus de Eventos</h1>
-	
+	        <br>
 	<div class="container ml-0">
 		<div class="row">
-			<h2 class="col text-center">Consulta ONT</h2>
+			<h3 class="col text-center">Microservicio: Consulta ONT</h3>
 			<h2 class="col text-center">             </h2>
-			<h2 class="col text-center">Consulta Tipo de Alarma</h2>
+			<h3 class="col ">Microservicio: Consulta Alarma</h3>
 		</div>   
             
 		<div class="row">
 			<div class="col col-sm-5 border   border-dark">
 				<h4>Request</h4>
-				<form th:action="@{/form}" th:object="${cliente}" method="post"
-					class="d-grid gap-2">
+                                <label> Invoke getModelGetONT:</label>
+                                <label style="color: #62A2F5">http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</label>
+                                
+                                <label class="col-sm-3">Serial Number</label> <input class="col-sm-6"
+						th:value="${frame}">
+                                <br>
+                                <br>
 
-					<div class="form-group row">
-						<label class="col-sm-3 col-form-label">serialNumber</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{nombre}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
-						</div>
-						<div class="col-sm-3">
-							<input type="submit" value="submit" class="btn btn-primary btn-sm" />
-						</div>
-						
-                                                <br> 
-                                                <label> Invoke getModelGetONT:</label>
-                                                <label style="color: #62A2F5">http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</label>
-                                                
-                                                
-					</div>
-					<br> <input type="hidden" th:field="*{id}" />
-				</form>
+                                    
 				<h4>Response</h4>
                           
                       
@@ -204,6 +190,28 @@
 
 		<div class="row border d-grid gap-1 border-success col-md-5" style="margin:auto">
   
+                <form th:action="@{/form}" th:object="${cliente}" method="post"
+                class="d-grid gap-2">
+
+                <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Serial Number</label>
+                        <div class="col-sm-6">
+                                <input type="text" th:field="*{nombre}" class="form-control"
+                                        th:errorclass="'form-control alert-danger'" /> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                        </div>
+                        <div class="col-sm-3">
+                                <input type="submit" value="submit" class="btn btn-primary btn-sm" />
+                        </div>
+
+                        <br> 
+
+
+                </div>
+                <br> <input type="hidden" th:field="*{id}" />
+        </form>
+                    
                     
                     <h6 align="center" style="color:#0D0D0D" > 
                         <label  style="font-size: 20px;" >Subscribe Channel  <label style="color: #499556; font-size: 22px;">  'type-alarm'  </label> </label> 
