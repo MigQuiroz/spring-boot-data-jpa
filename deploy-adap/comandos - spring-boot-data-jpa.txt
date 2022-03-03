@@ -1,0 +1,59 @@
+
+	
+
+4- revisar si la imagen no existe con el comando 
+	docker images 
+	docker rmi -f <IMAGE ID>
+	
+5- generar la imagen docker 
+	docker build -t spring-boot-data-jpa .
+
+6- levantar la imagen docker
+	docker run -it -p 8087:8087 spring-boot-data-jpa .
+	
+6- comprobar si esta arriba ejecutando un endpoint
+	http://localhost:8084/api/endpoint
+	
+7- crear el paquete de la imagen con el comando	
+	docker save spring-boot-data-jpa | gzip > spring-boot-data-jpa.tar.gz
+	
+	
+
+-----------deploy 
+
+sudo kubectl delete -f spring-boot-data-jpa.yaml (ejecutar dentro de la carpeta)
+sudo docker rmi -f  
+sudo docker image load --input spring-boot-data-jpa.tar.gz
+sudo docker tag spring-boot-data-jpa spring-boot-data-jpa:1 (nota:tambien cambiar en yaml)
+sudo docker rmi spring-boot-data-jpa:latest (nota: cambiar numero de tag)
+sudo kubectl apply -f spring-boot-data-jpa.yaml
+
+
+
+
+ir en la carpeta
+	cd /oraclevdrive/TP_lm/
+eleiminar imagen 
+	sudo rm spring-boot-data-jpa.tar.gz
+
+mover de carpeta
+entrar en la carpeta donde esta la imagen y mover de 
+	sudo mv spring-boot-data-jpa.tar.gz /oraclevdrive/TP_lm/
+
+
+----extras
+sudo kubectl get pod --namespace kubemq
+pass: @dmin.A5ap
+
+sudo kubectl logs -f <NAME PODS> -n kubemq
+
+curl -s http://127.0.0.1:30003/ont/GetSearchOntTest -d '{"serialNumber": "4857544345D0B69B"}' -H 'Content-Type: application/json'
+
+
+ejemplo de pub/sub 
+https://docs.kubemq.io/getting-started/message-patterns/pubsub
+
+ejemplo colas
+https://docs.kubemq.io/getting-started/message-patterns/queues
+
+

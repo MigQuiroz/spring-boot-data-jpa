@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-data-jpa
+  namespace: kubemq
+  labels:
+    app: spring-boot-data-jpa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-data-jpa
+  template:
+    metadata:
+      labels:
+        app: spring-boot-data-jpa
+    spec:
+      containers:
+        - name: spring-boot-data-jpa
+          image: spring-boot-data-jpa:1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8087
+      hostNetwork: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-data-jpa
+  namespace: kubemq
+  labels:
+    app: spring-boot-data-jpa
+spec:
+  ports:
+    - port: 8087
+      targetPort: 8087
+      nodePort: 30007
+      protocol: TCP
+  selector:
+    app: spring-boot-data-jpa
+  type: NodePort

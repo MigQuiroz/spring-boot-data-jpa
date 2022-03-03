@@ -12,49 +12,49 @@
 <body>
    
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Totalplay</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+        
+        <form th:action="@{/form2}" th:object="${cliente}" method="post" style="float:right"
+            class="d-grid gap-2 d-flex justify-content-center">
+            <div class="form-group row">
+            <div class="col-sm-3 ">
+                <button type="submit" class="btn btn-light" style="min-width:190px;color: black;text-height:50px;font-size:20px">Actualizar Pantalla</button>
+            </div>
+            <br> <br>
+            </div>
+            <br> <input type="hidden" th:field="*{id}" />
+         </form>
+        
 
 	</nav>
+
+
 	<h1 class="col text-center"> Microservicios con Bus de Eventos</h1>
-	
+
+	        <br>
 	<div class="container ml-0">
 		<div class="row">
-			<h2 class="col text-center">Consulta ONT</h2>
+			<h3 class="col text-center">Microservicio: Consulta ONT</h3>
 			<h2 class="col text-center">             </h2>
-			<h2 class="col text-center">Consulta Tipo de Alarma</h2>
+			<h3 class="col ">Microservicio: Consulta Alarma</h3>
 		</div>   
             
 		<div class="row">
-			<div class="col col-sm-5 border   border-success">
+			<div class="col col-sm-5 border   border-dark">
 				<h4>Request</h4>
-				<form th:action="@{/form}" th:object="${cliente}" method="post"
-					class="d-grid gap-2">
+                                <label> Invoke getModelGetONT:</label>
+                                <label style="color: #62A2F5">http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</label>
+                                
+                                <label class="col-sm-3">Serial Number</label> <input class="col-sm-6"
+						th:value="${sn}">
+                                <br>
+                                <br>
 
-					<div class="form-group row">
-						<label class="col-sm-3 col-form-label">serialNumber</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{nombre}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
-						</div>
-						<div class="col-sm-3">
-							<input type="submit" value="submit" class="btn btn-primary btn-sm" />
-						</div>
-						
-                                                <br> 
-                                                <label> Invoke getModelGetONT:</label>
-                                                <label style="color: #62A2F5">http://10.213.8.248/TPESOASF/TProvisioning.asmx?wsdl</label>
-                                                
-                                                
-					</div>
-					<br> <input type="hidden" th:field="*{id}" />
-				</form>
+                                    
 				<h4>Response</h4>
                           
                       
@@ -97,7 +97,7 @@
                                     
                                   
                                     <label>Body</label>
-                                    <div class="border   border-warning ">
+                                    <div class="border   border-dark ">
 
                                             {<br>
                                             &nbsp;&nbsp; <label class="text-danger" >"frame"</label>:<label class="text-primary" th:text="${frame}"> ,</label> <br> 
@@ -119,8 +119,19 @@
                                 
  
 			</div>
-			<div class="col col border d-grid gap-1 "> adap </div> 
-			<div class="col col-sm-5 border d-grid gap-1 border-success">
+                    
+			<div class="col col align-self-center" style="">
+                            
+                            <h6 align="center" style="color:#0174DF" > 
+                                <label  style="font-size: 20px;" >Event Broker </label> 
+                            </h6>
+                            
+                            <div class="d-flex justify-content-center ">
+                               
+                            <img alt="hola" width="80" height="80" th:src="@{/images/kubem.png} " >
+                            </div>
+                        </div>
+			<div class="col col-sm-5 border d-grid gap-1 border-dark">
 				<div>
 
                                         <h6 align="center" style="color:#0D0D0D" > 
@@ -156,27 +167,26 @@
 						<label class="col-sm-3">serialNumber:</label> <input class="col-sm-6" th:value="${sn}">
 					</div>
 
-                                          <br>
-                                <br>   
+                                        <br>
+                                        <br>   
                                 
 					<h4>Response</h4>
 					<div class="row">
 						<label class="col-sm-3">typeCut:</label> <input class="col-sm-6" th:value="${typecut}">
 					</div>
 					<div class="row">
-						<label class="col-sm-3">descripción:</label> <input
-							class="col-sm-6">
+                                            <label class="col-sm-3">descripción:</label> <input
+							class="col-sm-6" th:value="${desc}" >
 					</div>
 
-                                        
-                                <br>
-                                <br>   
+                                        <br>
+                                        <br>   
                                         <h6 align="center" style="color:#0D0D0D" > 
                                             <label  style="font-size: 20px;" >publish Channel  <label style="color: #499556; font-size: 22px;">  'type-alarm'  </label> </label> 
                                         </h6>
                                         
                                         
-					<div class="form-control">
+					<div class="form-control border border-dark">
 
 						{ <br> 
 						<label class="text-danger">&nbsp;&nbsp;&nbsp;&nbsp;"typeCut"</label>: <label class="text-primary" th:text="${typecut}">,</label> <br> 
@@ -204,6 +214,28 @@
 
 		<div class="row border d-grid gap-1 border-success col-md-5" style="margin:auto">
   
+                <form th:action="@{/form}" th:object="${cliente}" method="post"
+                class="d-grid gap-2">
+
+                <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Serial Number</label>
+                        <div class="col-sm-6">
+                                <input type="text" th:field="*{nombre}" class="form-control"
+                                        th:errorclass="'form-control alert-danger'" /> <small
+                                        class="form-text text-danger"
+                                        th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                        </div>
+                        <div class="col-sm-3">
+                                <input type="submit" value="submit" class="btn btn-primary btn-sm" />
+                        </div>
+
+                        <br> 
+
+
+                </div>
+                <br> <input type="hidden" th:field="*{id}" />
+        </form>
+                    
                     
                     <h6 align="center" style="color:#0D0D0D" > 
                         <label  style="font-size: 20px;" >Subscribe Channel  <label style="color: #499556; font-size: 22px;">  'type-alarm'  </label> </label> 
@@ -212,9 +244,17 @@
 				<label class="col-sm-3">typeCut:</label> <input class="col-sm-6" th:value="${typecut}">
 			</div>
 			<div class="row">
-				<label class="col-sm-3">descripción:</label> <input class="col-sm-6" >
+				<label class="col-sm-3">descripción:</label> <input class="col-sm-6"  th:value="${desc}" >
 			</div>
 
+                        <br>
+                                            
+                        
+  
+
+                        
+                     <br>   
+                    
 
 		</div>
                 <br>

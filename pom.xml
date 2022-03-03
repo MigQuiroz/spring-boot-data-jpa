@@ -56,6 +56,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
+                <!--dependencia kubeMQ-->
+                <dependency>
+                    <groupId>io.kubemq.sdk</groupId>
+                    <artifactId>kubemq-sdk-Java</artifactId>
+                    <version>1.0.2</version>
+                </dependency>
 	 <dependency>
 	  <groupId>com.google.code.gson</groupId>
 	  <artifactId>gson</artifactId>
