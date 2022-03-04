@@ -231,25 +231,6 @@ public class ClienteController implements StreamObserver<EventReceive>{
                   System.out.println(e);
             }
                          
-            
-//            SubscribeRequest subscribeRequest = new SubscribeRequest();
-//
-//            try {
-//                subscribeRequest.setChannel("type-alarm");
-//                subscribeRequest.setClientID("client-type-alarm");
-//                subscribeRequest.setSubscribeType(SubscribeType.EventsStore);
-//                subscribeRequest.setEventsStoreType(EventsStoreType.StartNewOnly);
-//            } catch (Exception e) {
-//                System.out.println("SubscribeRequest type-alarm");
-//                System.out.println(e);
-//            }
-//         
-//             try {
-//                subscriber.SubscribeToEvents(subscribeRequest, this);
-//            } catch (ServerAddressNotSuppliedException | SSLException e) {
-//                 System.out.println("SubscribeToEvents");
-//                  System.out.println(e);
-//            }
         }
         
 }
